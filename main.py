@@ -8,6 +8,8 @@ screen = pygame.display.set_mode((500, 500))
 
 clock = pygame.time.Clock()
 
+body = 1
+
 class Player():
     def __init__(self, x, y):
         self.x = x
@@ -15,6 +17,8 @@ class Player():
 
     def draw(self, screen): # rect in the third argument requiers 4 things
         pygame.draw.rect(screen, (0, 0, 255), (self.x, self.y, 25, 25))
+        # do poprawy, sprawidzć dlaczego przy naciśnięciu dodaje więcej niż 1 
+        print(body)
 
 class Point():
     def __init__(self, x, y):
@@ -26,6 +30,7 @@ class Point():
 
 player = Player(100, 400)
 point = Point(random.randint(0, 500), random.randint(0, 500))
+
 run = True
 while run:
     clock.tick(60)
@@ -47,6 +52,9 @@ while run:
     if keys[pygame.K_RIGHT]:
         player.x += 5
         print(player.x)
+
+    if keys[pygame.K_SPACE]:
+        body += 1
 # crossing screen border on the left and right
 #     right
     if player.x >= 500:
